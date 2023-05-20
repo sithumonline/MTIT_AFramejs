@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <script src="https://stemkoski.github.io/AR.js-examples/js/aframe.min.js"></script>
+  <script src="https://stemkoski.github.io/AR.js-examples/js/aframe-ar.js"></script>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false;"
+      arjs="debugUIEnabled: false;"
+    >
+      <!-- 
+    load tinker.obj
+-->
+      <a-asset-item id="tinker" src="tinker.obj"></a-asset-item>
+      <a-asset-item id="tinker-mtl" src="obj.mtl"></a-asset-item>
+
+      <!--
+    add kanji marker
+-->
+
+      <a-marker type="pattern" url="kanji.patt">
+        <!--
+    add tinker to scene
+-->
+        <a-entity
+          obj-model="obj: #tinker; mtl: #tinker-mtl"
+          scale="0.01 0.01 0.01"
+          position="0 0 0"
+        >
+          <a-animation
+            attribute="rotation"
+            dur="5000"
+            to="0 360 0"
+            repeat="indefinite"
+          ></a-animation>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+<!-- <a-assets>
+        <a-asset-item id="tree" src="tinker.obj"></a-asset-item>
+      </a-assets>
+
+      <a-marker type="pattern" url="kanji.patt">
+        <a-entity
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.10 0.10 0.10"
+          gltf-model="#tree"
+        >
+        </a-entity>
+      </a-marker> -->
